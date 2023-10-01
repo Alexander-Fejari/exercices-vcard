@@ -1,0 +1,359 @@
+@import './styles/reset';
+@import './styles/variables';
+@import './styles/utilities';
+@import './styles/animations';
+
+.app {
+    font-family: $fontSansSerif;
+    display: grid;
+    grid: 'header' auto 'main' auto 'picture' auto 'aside' auto 'footer' auto / auto;
+    column-gap: 3rem;
+    width: 100vw;
+    height: 100vh;
+    background-color: $bgColor;
+    header {
+        grid-area: header;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        animation: fadeInTop 2s cubic-bezier(0.11, 0, 0.5, 0) 1s 1 normal
+            forwards;
+
+        h1 {
+            margin: 1rem;
+        }
+
+        p {
+            margin-top: 0;
+            text-transform: capitalize;
+            color: $fontColor;
+        }
+    }
+
+    .cv {
+        width: 100%;
+        &__picture {
+            grid-area: picture;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid black;
+            border-radius: 50%;
+            width: 20rem;
+            height: 20rem;
+            margin: 1rem auto 1rem auto;
+            animation: forwardHorizontal 2s cubic-bezier(0.11, 0, 0.5, 0) 0s 1
+                normal forwards;
+
+            img {
+                height: auto;
+                border-radius: 43%;
+            }
+        }
+
+        &__info {
+            grid-area: aside;
+            &__perso {
+                text-align: center;
+                p {
+                    margin-top: 0;
+                }
+            }
+
+            &__projets {
+                text-align: center;
+                h2 {
+                    margin-bottom: 1rem;
+                }
+
+                &__container {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    text-align: center;
+                }
+            }
+
+            &__skills {
+                &__container {
+                    img {
+                        width: 4.25rem;
+                        height: 4.25rem;
+                        margin: 1rem;
+                        &:nth-child(even) {
+                            margin: 1rem;
+                        }
+                    }
+                }
+            }
+
+            &__social {
+                width: 100%;
+                h2 {
+                    margin-bottom: 1rem;
+                }
+                &__container {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-around;
+                    align-items: center;
+                    a {
+                        margin: 1rem 0;
+                        &:nth-child(even) {
+                            margin: 1rem 0;
+                        }
+                        img {
+                            width: 4.25rem;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+            &__language {
+                width: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                &__flex {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: center;
+                    align-items: flex-start;
+                }
+                &__title {
+                    width: 100%;
+                    text-align: center;
+                }
+                &__container {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    flex: 50%;
+                }
+            }
+        }
+        &__xp {
+            grid-area: main;
+            &__presentation {
+                text-align: center;
+                h2 {
+                    margin: 1rem;
+                }
+            }
+            &__school {
+                width: 100%;
+                text-align: center;
+                margin-top: 2rem;
+                h2 {
+                    margin-bottom: 2rem;
+                }
+
+                &__cases {
+                    display: flex;
+                    flex-flow: column wrap;
+                    justify-content: center;
+                    align-items: center;
+                    &:nth-child(1) {
+                        order: 2;
+                        margin: 0.5rem;
+                    }
+                    &:nth-child(2) {
+                        order: 3;
+                    }
+                    &:nth-child(3) {
+                        order: 1;
+                    }
+                    &__year {
+                        color: $hintColor;
+                        text-align: center;
+                        margin: 2rem 1rem 1rem 1rem;
+                    }
+                }
+            }
+            h2 {
+                text-align: center;
+            }
+            &__jobs {
+                text-align: center;
+                &__year {
+                    color: $hintColor;
+                    border-right: 1px solid $hintColor;
+                    text-align: center;
+                    margin: 1rem 1rem 0rem 1rem;
+                }
+
+                &__cases {
+                    display: flex;
+                    flex-flow: column wrap;
+                    justify-content: center;
+                    align-items: center;
+                    h3 {
+                        margin: 0.5rem;
+                    }
+                    &__year {
+                        color: $hintColor;
+                        border-right: 1px solid $hintColor;
+                        text-align: center;
+                        margin: 1rem 1rem 0rem 1rem;
+                    }
+                }
+            }
+        }
+        footer {
+            grid-area: footer;
+            display: flex;
+            flex-flow: row wrap;
+            margin: 1rem;
+            p {
+                text-align: center;
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        grid:
+            'picture header' auto
+            'aside main' 1fr
+            'footer footer' auto
+            / 350px auto;
+
+        header {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .cv {
+            margin-left: 1rem;
+            &__xp {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                max-width: 95%;
+                &__presentation {
+                    text-align: start;
+                    h2 {
+                        text-align: center;
+                    }
+                    p {
+                        margin: 1rem;
+                    }
+                }
+                h2 {
+                    width: 100%;
+                    text-align: center;
+                }
+                &__school {
+                    width: 100%;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 2rem 0;
+
+                    &__cases {
+                        width: 100%;
+                        max-height: 10rem;
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: stretch;
+                        align-items: stretch;
+
+                        h3 {
+                            text-align: center;
+                            margin: 0 0 1rem 1rem;
+                            width: 100%;
+                            flex: 1;
+                        }
+                        p {
+                            &:nth-child(2) {
+                                text-align: center;
+                                margin: 0 0 1rem 1rem;
+                                width: 100%;
+                            }
+                            &:nth-child(3) {
+                                text-align: left;
+                                flex: auto;
+                                overflow-wrap: break-word;
+                                margin-right: 1rem;
+                            }
+                        }
+                        &__year {
+                            display: flex;
+                            flex-flow: column wrap;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 0;
+                            padding-left: 1rem;
+                            border-right: none;
+                            border-left: 1px solid $hintColor;
+                            p {
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+                &__jobs {
+                    width: 100%;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 2rem 0;
+
+                    &__cases {
+                        width: 100%;
+                        max-height: 10rem;
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: center;
+                        align-items: stretch;
+                        h3 {
+                            text-align: center;
+                            margin: 0 0 1rem 1rem;
+                            width: 100%;
+                            flex: 1;
+                        }
+                        p {
+                            &:nth-child(2) {
+                                text-align: center;
+                                margin: 0 0 1rem 1rem;
+                                width: 100%;
+                            }
+                            &:nth-child(3) {
+                                text-align: left;
+                                width: 70%;
+                            }
+                        }
+                        &__year {
+                            display: flex;
+                            flex-flow: column wrap;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 0;
+                            padding-left: 1rem;
+                            border-right: none;
+                            border-left: 1px solid $hintColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        footer {
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 1rem;
+            text-align: center;
+            p {
+                width: 100%;
+            }
+        }
+    }
+}
